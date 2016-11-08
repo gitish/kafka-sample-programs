@@ -2,7 +2,8 @@ h3. Quick start with KAFKA
 --------------------------
   Download KAFKA (latest version) and extract to localfolder
 	your directory structure should be 
-    <<extracted directory>>\kafka_<<version>>
+    --extracted directory--\kafka_--version--
+    
 	1. Start the server
 		Kafka uses ZooKeeper so you need to first start a ZooKeeper server if you don't already have one. You can use the convenience script packaged with kafka to get a quick-and-dirty single-node ZooKeeper instance
 		
