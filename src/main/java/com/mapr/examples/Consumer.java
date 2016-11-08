@@ -15,7 +15,7 @@ import java.util.Properties;
 import java.util.Random;
 
 /**
- * This program reads messages from two topics. Messages on "fast-messages" are analyzed
+ * This program reads messages from two topics. Messages on "shailTest" are analyzed
  * to estimate latency (assuming clock synchronization between producer and consumer).
  * <p/>
  * Whenever a message is received on "slow-messages", the stats are dumped.
@@ -37,7 +37,7 @@ public class Consumer {
             }
             consumer = new KafkaConsumer<>(properties);
         }
-        consumer.subscribe(Arrays.asList("fast-messages", "summary-markers"));
+        consumer.subscribe(Arrays.asList("shailTest", "summary-markers"));
         int timeouts = 0;
         //noinspection InfiniteLoopStatement
         while (true) {
@@ -46,14 +46,18 @@ public class Consumer {
             if (records.count() == 0) {
                 timeouts++;
             } else {
-                System.out.printf("Got %d records after %d timeouts\n", records.count(), timeouts);
+                try{
+                    System.out.printf("Got %d records after %d timeouts\n", records.count(), timeouts);
+                }catch(Exception e){}
                 timeouts = 0;
             }
             for (ConsumerRecord<String, String> record : records) {
                 switch (record.topic()) {
-                    case "fast-messages":
+                    case "shailTest":
                         // the send time is encoded inside the message
-                        JsonNode msg = mapper.readTree(record.value());
+                        String value=record.value();
+                        try{
+                        JsonNode msg = mapper.readTree(value);
                         switch (msg.get("type").asText()) {
                             case "test":
                                 long latency = (long) ((System.nanoTime() * 1e-9 - msg.get("t").asDouble()) * 1000);
@@ -63,6 +67,7 @@ public class Consumer {
                             case "marker":
                                 // whenever we get a marker message, we should dump out the stats
                                 // note that the number of fast messages won't necessarily be quite constant
+                                
                                 System.out.printf("%d messages received in period, latency(min, max, avg, 99%%) = %d, %d, %.1f, %d (ms)\n",
                                         stats.getTotalCount(),
                                         stats.getValueAtPercentile(0), stats.getValueAtPercentile(100),
@@ -71,13 +76,17 @@ public class Consumer {
                                         global.getTotalCount(),
                                         global.getValueAtPercentile(0), global.getValueAtPercentile(100),
                                         global.getMean(), global.getValueAtPercentile(99));
-
+                                
                                 stats.reset();
                                 break;
                             default:
                                 throw new IllegalArgumentException("Illegal message type: " + msg.get("type"));
                         }
+                        }catch(Exception e){
+                            System.out.println(value);
+                        }
                         break;
+                        
                     case "summary-markers":
                         break;
                     default:
