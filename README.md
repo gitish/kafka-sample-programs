@@ -33,7 +33,8 @@ Kafka comes with a command line client that will take input from a file or from 
 ```
 bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic shailTest
 ```
-- Start a consumer
+
+ - Start a consumer
   Kafka also has a command line consumer that will dump out messages to standard output.
 ```
 bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic shailTest --from-beginning --zookeeper localhost:2181
