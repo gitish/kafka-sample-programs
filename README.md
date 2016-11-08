@@ -39,8 +39,10 @@ bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic shai
 ```
 bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic shailTest --from-beginning --zookeeper localhost:2181
 ```	
-* Try to run producer and consumer
+* Run main application for  
 [producer](https://github.com/gitish/kafka-sample-programs/blob/master/src/main/java/com/mapr/examples/Producer.java)
+&
 [consumer](https://github.com/gitish/kafka-sample-programs/blob/master/src/main/java/com/mapr/examples/Consumer.java)
+and check all console (even cmd console to see magic)
 
 ### check [original doc for more detail](https://github.com/mapr-demos/kafka-sample-programs)
