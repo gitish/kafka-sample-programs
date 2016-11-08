@@ -33,4 +33,4 @@ h3. Quick start with KAFKA
 
 		> bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic shailTest --from-beginning --zookeeper localhost:2181
 		
- ## check (original doc for more detail)[https://github.com/mapr-demos/kafka-sample-programs)
+ ## check [original doc for more detail](https://github.com/mapr-demos/kafka-sample-programs)
