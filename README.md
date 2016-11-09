@@ -11,7 +11,7 @@ bin\windows\zookeeper-server-start.bat config\zookeeper.properties
 
 * Now start the Kafka server (this will be node 0):
 ```
-bin\windows\kafka-server-start.bat config\server.properties{code}
+bin\windows\kafka-server-start.bat config\server.properties
 ```
 
 * Create a topic
