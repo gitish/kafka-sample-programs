@@ -1,7 +1,7 @@
 Quick start with KAFKA
 --------------------------
 #### Download KAFKA (latest version) and extract to localfolder
-#### got to your kafka-(version) directory and follow below steps 
+#### goto your kafka-(version) directory and follow below steps 
 
 * Start the server
 Kafka uses ZooKeeper so you need to first start a ZooKeeper server if you don't already have one. You can use the convenience script packaged with kafka to get a quick-and-dirty single-node ZooKeeper instance	
