@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+extraProperties=sonar.jdbc.username\=sonar4\r\nsonar.jdbc.driverClassName\=com.mysql.jdbc.Driver\r\nsonar.jdbc.password\=son4r4\r\nsonar.jdbc.url\=jdbc\:mysql\://appduvirtual0c2.machine.test.group\:3306/sonar4?useUnicode\=true&characterEncoding\=utf8&rewriteBatchedStatements\=true\r\nsonar.pdf.username\=admin\r\nsonar.pdf.password\=admin
+projectKey=mapr.com\:kafka-examples
+serverUrl=http\://localhost\:9000
+version=2
