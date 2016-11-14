@@ -1,4 +1,4 @@
-package com.lloyds.model;
+package com.shl.model;
 
 public class Sender {
 	String name;

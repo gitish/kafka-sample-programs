@@ -1,16 +1,16 @@
-package com.lloyds.demo;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.io.Resources;
-import com.lloyds.demo.constant.NotificationType;
-import com.lloyds.model.Notification;
-
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerRecord;
+package com.shl.demo;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.io.Resources;
+import com.shl.demo.constant.NotificationType;
+import com.shl.model.Notification;
 
 /**
  * This producer will send a bunch of messages to topic "shailTest". Every so

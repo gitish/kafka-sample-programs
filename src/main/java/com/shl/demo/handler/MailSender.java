@@ -1,6 +1,5 @@
-package com.lloyds.demo.handler;
+package com.shl.demo.handler;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,8 +14,8 @@ import microsoft.exchange.webservices.data.property.complex.MessageBody;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.lloyds.model.Notification;
-import com.lloyds.model.Sender;
+import com.shl.model.Notification;
+import com.shl.model.Sender;
 
 public class MailSender {
 	Sender sender=new Sender();

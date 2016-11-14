@@ -1,6 +1,6 @@
-package com.lloyds.demo.handler;
+package com.shl.demo.handler;
 
-import com.lloyds.model.Notification;
+import com.shl.model.Notification;
 
 public class NotificationHandler {
 	public static void notify(Notification notification){

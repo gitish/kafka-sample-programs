@@ -1,4 +1,4 @@
-package com.lloyds.demo.sample;
+package com.shl.demo.sample;
 
 import java.io.IOException;
 

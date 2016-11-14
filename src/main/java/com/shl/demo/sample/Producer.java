@@ -1,4 +1,4 @@
-package com.lloyds.demo.sample;
+package com.shl.demo.sample;
 
 import com.google.common.io.Resources;
 import org.apache.kafka.clients.producer.KafkaProducer;

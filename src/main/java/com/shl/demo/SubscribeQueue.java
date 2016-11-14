@@ -1,4 +1,4 @@
-package com.lloyds.demo;
+package com.shl.demo;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,12 +10,10 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.io.Resources;
-import com.lloyds.demo.handler.NotificationHandler;
-import com.lloyds.model.Notification;
+import com.shl.demo.handler.NotificationHandler;
+import com.shl.model.Notification;
 
 /**
  * This program reads messages from two topics. Messages on "shailTest" are

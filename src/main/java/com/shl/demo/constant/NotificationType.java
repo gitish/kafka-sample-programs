@@ -1,4 +1,4 @@
-package com.lloyds.demo.constant;
+package com.shl.demo.constant;
 
 public enum NotificationType {
 	EMAIL("email"),

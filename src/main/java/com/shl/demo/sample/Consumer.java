@@ -1,4 +1,4 @@
-package com.lloyds.demo.sample;
+package com.shl.demo.sample;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

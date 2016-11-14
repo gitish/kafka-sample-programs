@@ -1,8 +1,6 @@
-package com.lloyds.model;
+package com.shl.model;
 
-import com.lloyds.demo.constant.NotificationType;
-
-
+import com.shl.demo.constant.NotificationType;
 
 public class Notification{
 	private NotificationType type;
