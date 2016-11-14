@@ -1,4 +1,4 @@
-package com.mapr.examples;
+package com.lloyds.demo.sample;
 
 import com.google.common.io.Resources;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -28,13 +28,13 @@ public class Producer {
             for (int i = 0; i < 1000000; i++) {
                 // send lots of messages
                 producer.send(new ProducerRecord<String, String>(
-                        "shailTest",
+                        "abcd",
                         String.format("{\"type\":\"test\", \"t\":%.3f, \"k\":%d}", System.nanoTime() * 1e-9, i)));
 
                 // every so often send to a different topic
                 if (i % 1000 == 0) {
                     producer.send(new ProducerRecord<String, String>(
-                            "shailTest",
+                            "abcd",
                             String.format("{\"type\":\"marker\", \"t\":%.3f, \"k\":%d}", System.nanoTime() * 1e-9, i)));
                     producer.send(new ProducerRecord<String, String>(
                             "summary-markers",

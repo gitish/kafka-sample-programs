@@ -1,4 +1,4 @@
-package com.mapr.examples;
+package com.lloyds.demo.sample;
 
 import java.io.IOException;
 

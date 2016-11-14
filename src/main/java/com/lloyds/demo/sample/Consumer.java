@@ -1,4 +1,4 @@
-package com.mapr.examples;
+package com.lloyds.demo.sample;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,7 +37,7 @@ public class Consumer {
             }
             consumer = new KafkaConsumer<>(properties);
         }
-        consumer.subscribe(Arrays.asList("shailTest", "summary-markers"));
+        consumer.subscribe(Arrays.asList("abcd", "summary-markers"));
         int timeouts = 0;
         //noinspection InfiniteLoopStatement
         while (true) {
@@ -54,7 +54,7 @@ public class Consumer {
             }
             for (ConsumerRecord<String, String> record : records) {
                 switch (record.topic()) {
-                    case "shailTest":
+                    case "abcd":
                         // the send time is encoded inside the message
                         String value = record.value();
                         try {
