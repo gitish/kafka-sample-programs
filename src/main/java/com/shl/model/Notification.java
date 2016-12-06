@@ -3,6 +3,7 @@ package com.shl.model;
 import com.shl.demo.constant.NotificationType;
 
 public class Notification{
+    public static final String NOTIFICATION_MSG="Hi {0}, <p>You have spent {1} on {2} with {3}. <br/>Your Current balance is {4} </p><br/></br> Thanks,<br/>Coms Mgr.";
 	private NotificationType type;
 	private String to;
 	private String template;

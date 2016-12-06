@@ -19,7 +19,7 @@ public class Sender {
 		this.email = email;
 	}
 	public String getPass() {
-		return "Augu2016";
+		return "Nove2016";
 	}
 	public void setPass(String pass) {
 		this.pass = pass;

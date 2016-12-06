@@ -1,18 +1,21 @@
 package com.shl.demo;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Properties;
-import java.util.Random;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.io.Resources;
+import com.shl.demo.constant.NotificationType;
 import com.shl.demo.handler.NotificationHandler;
+import com.shl.demo.util.PropertyLoader;
+import com.shl.model.CardInfo;
 import com.shl.model.Notification;
 
 /**
@@ -24,21 +27,12 @@ import com.shl.model.Notification;
  */
 public class SubscribeQueue {
 	private KafkaConsumer<String, String> consumer;
-	private String[] topics={"PAS1"};
+	private String[] topics={"bigDataRealtimePOCTopic"};
 	ObjectMapper mapper = new ObjectMapper();
+    
 	public void init() throws IOException {
-		try (InputStream props = Resources.getResource("consumer.props")
-				.openStream()) {
-			Properties properties = new Properties();
-			properties.load(props);
-			if (properties.getProperty("group.id") == null) {
-				properties.setProperty("group.id",
-						"group-" + new Random().nextInt(100000));
-			}
-			consumer = new KafkaConsumer<>(properties);
-		}catch(Exception e){
-		    e.printStackTrace();
-		}
+	    Properties properties = PropertyLoader.loadProperties("consumer.props");
+	    consumer = new KafkaConsumer<>(properties);
 		consumer.subscribe(Arrays.asList(topics));
 	}
 
@@ -59,17 +53,36 @@ public class SubscribeQueue {
 				timeouts = 0;
 			}
 			for (ConsumerRecord<String, String> record : records) {
+			    System.out.println("========= Notifying ================");
 				try{
-					NotificationHandler.notify(mapper.readValue(record.value(), Notification.class));
+				    CardInfo cardInfo=getCardInfo(record.value());
+				    
+					NotificationHandler.notify(getNotification(cardInfo));
 				}catch(IOException e){
 					e.printStackTrace();
 				}
+				System.out.println("=============== done ==================");
 			}
 		}
 	}
 
-	public static void main(String[] args) throws IOException {
+	private CardInfo getCardInfo(String record) throws JsonParseException, JsonMappingException, IOException {
+	    return mapper.readValue(record, CardInfo.class);
+    }
+
+    private Notification getNotification(CardInfo cardInfo) {
+	    Notification notification=new Notification();
+	    notification.setType(NotificationType.EMAIL);
+	    notification.setTo("sshail@sapient.com");
+	    notification.setSubject("Card Transaction details");
+	    notification.setMessage(MessageFormat.format(Notification.NOTIFICATION_MSG, cardInfo.getFirstName()+" " + cardInfo.getLastName(),
+	            cardInfo.getNetAmount(),cardInfo.getTrnDate(), cardInfo.getMerchant(),cardInfo.getCurrentAmount()));
+        return notification;
+    }
+
+    public static void main(String[] args) throws IOException {
 		SubscribeQueue sq=new SubscribeQueue();
+		//{"cardNumber" : "00001","firstName" : "Shailendra","lastName" : "shail","email" : "sshail@sapient.com","mobile" : "9000000001","merchant" : "M&S","trnDate" : "12/06/2016","year" : "2016","month" : "12","netAmount" : 15,"currentAmount" : 550}
 		System.out.println("listening...");
 		sq.init();
 		sq.run();
