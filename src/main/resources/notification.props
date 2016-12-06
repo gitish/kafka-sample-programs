@@ -1,4 +1,12 @@
-smtp.host=smtp.gmail.com
-smtp.port=25
-sender=sshail@sapient.com
+######################################
+# Property for SMTP
+######################################
+mail.smtp.host=smtp.example.com
+from=xxxxx
+suffix=xxxx
+
+######################################
+# property for exchanging server
+######################################
+sender=noreply@sapient.com
 pass=XXXXX

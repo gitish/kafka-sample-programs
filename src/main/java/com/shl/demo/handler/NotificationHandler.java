@@ -8,7 +8,7 @@ public class NotificationHandler {
 		switch(notification.getType()){
 		case EMAIL:
 			System.out.println("Sending mail to: " + notification.getTo());
-			Thread ms =new MailSender(notification);
+			Thread ms =new SMTPMAilSender(notification);
 			ms.start();
 			break;
 		case SMS:
