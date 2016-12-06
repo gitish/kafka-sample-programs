@@ -73,8 +73,8 @@ public class SubscribeQueue {
     private Notification getNotification(CardInfo cardInfo) {
 	    Notification notification=new Notification();
 	    notification.setType(NotificationType.EMAIL);
-	    notification.setTo("sshail@sapient.com");
-	    notification.setSubject("Card Transaction details");
+	    notification.setTo(cardInfo.getEmail());
+	    notification.setSubject("Card Transaction");
 	    notification.setMessage(MessageFormat.format(Notification.NOTIFICATION_MSG, cardInfo.getFirstName()+" " + cardInfo.getLastName(),
 	            cardInfo.getNetAmount(),cardInfo.getTrnDate(), cardInfo.getMerchant(),cardInfo.getCurrentAmount()));
         return notification;
