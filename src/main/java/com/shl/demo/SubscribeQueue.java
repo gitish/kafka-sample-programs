@@ -24,7 +24,7 @@ import com.shl.model.Notification;
  */
 public class SubscribeQueue {
 	private KafkaConsumer<String, String> consumer;
-	private String[] topics={"PAS"};
+	private String[] topics={"PAS1"};
 	ObjectMapper mapper = new ObjectMapper();
 	public void init() throws IOException {
 		try (InputStream props = Resources.getResource("consumer.props")
@@ -36,6 +36,8 @@ public class SubscribeQueue {
 						"group-" + new Random().nextInt(100000));
 			}
 			consumer = new KafkaConsumer<>(properties);
+		}catch(Exception e){
+		    e.printStackTrace();
 		}
 		consumer.subscribe(Arrays.asList(topics));
 	}
